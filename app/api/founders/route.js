@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getCollection, saveCollection, makeId } from "@/lib/data";
 import { isAuthed } from "@/lib/requireAuth";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const founders = await getCollection("founders");
   return NextResponse.json(founders);

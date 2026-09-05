@@ -3,6 +3,7 @@ import Image from "next/image";
 import Crescent from "@/components/Crescent";
 import { getCollection } from "@/lib/data";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 function formatDate(dateStr) {

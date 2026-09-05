@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getCollection, saveCollection, makeId } from "@/lib/data";
 import { isAuthed } from "@/lib/requireAuth";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   if (!(await isAuthed())) {
     return NextResponse.json({ error: "Not authorized" }, { status: 401 });

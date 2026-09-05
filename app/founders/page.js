@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getCollection } from "@/lib/data";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export const metadata = { title: "Founders — The Returned Kindness" };
 

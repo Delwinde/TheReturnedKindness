@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getCollection, saveCollection, makeId } from "@/lib/data";
 import { isAuthed } from "@/lib/requireAuth";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const events = await getCollection("events");
   const sorted = [...events].sort((a, b) => (a.date < b.date ? 1 : -1));
