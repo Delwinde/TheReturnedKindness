@@ -121,6 +121,15 @@ export default async function HomePage() {
               href={`/stories/${story.id}`}
               className="group block rounded-sm border border-sand-200 bg-white p-6 hover:border-rose-300 transition-colors"
             >
+              {story.image && (
+                <Image
+                  src={story.image}
+                  alt=""
+                  width={400}
+                  height={200}
+                  className="w-full h-32 object-cover rounded-sm mb-4"
+                />
+              )}
               <p className="text-xs text-navy-400 mb-3">{formatDate(story.date)}</p>
               <h3 className="font-display text-xl text-navy-800 mb-2 group-hover:text-rose-500 transition-colors">
                 {story.title}
@@ -159,7 +168,16 @@ export default async function HomePage() {
                   {event.location && (
                     <p className="text-sm text-navy-400 mb-2">{event.location}</p>
                   )}
-                  <p className="text-sm text-navy-500 line-clamp-2">{event.summary}</p>
+                  <p className="text-sm text-navy-500 line-clamp-2 mb-3">{event.summary}</p>
+                  {event.image && (
+                    <Image
+                      src={event.image}
+                      alt=""
+                      width={320}
+                      height={160}
+                      className="w-full max-w-[220px] h-auto rounded-sm object-cover"
+                    />
+                  )}
                 </div>
               </div>
             ))}

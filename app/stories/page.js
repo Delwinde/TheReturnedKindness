@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getCollection } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
@@ -39,13 +40,24 @@ export default async function StoriesPage() {
             <Link
               key={story.id}
               href={`/stories/${story.id}`}
-              className="group block rounded-sm border border-sand-200 bg-white p-7 hover:border-rose-300 transition-colors"
+              className="group flex gap-5 rounded-sm border border-sand-200 bg-white p-7 hover:border-rose-300 transition-colors"
             >
-              <p className="text-xs text-navy-400 mb-3">{formatDate(story.date)}</p>
-              <h2 className="font-display text-2xl text-navy-800 mb-2 group-hover:text-rose-500 transition-colors">
-                {story.title}
-              </h2>
-              <p className="text-navy-500">{story.excerpt}</p>
+              {story.image && (
+                <Image
+                  src={story.image}
+                  alt=""
+                  width={96}
+                  height={96}
+                  className="w-24 h-24 rounded-sm object-cover shrink-0"
+                />
+              )}
+              <div className="min-w-0">
+                <p className="text-xs text-navy-400 mb-3">{formatDate(story.date)}</p>
+                <h2 className="font-display text-2xl text-navy-800 mb-2 group-hover:text-rose-500 transition-colors">
+                  {story.title}
+                </h2>
+                <p className="text-navy-500">{story.excerpt}</p>
+              </div>
             </Link>
           ))}
           {sorted.length === 0 && (

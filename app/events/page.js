@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getCollection } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
@@ -54,7 +55,16 @@ export default async function EventsPage() {
                   {formatDate(event.date)}
                   {event.location ? ` · ${event.location}` : ""}
                 </p>
-                <p className="text-navy-600">{event.summary}</p>
+                <p className="text-navy-600 mb-3">{event.summary}</p>
+                {event.image && (
+                  <Image
+                    src={event.image}
+                    alt=""
+                    width={480}
+                    height={270}
+                    className="w-full max-w-sm h-auto rounded-sm object-cover"
+                  />
+                )}
               </div>
             </div>
           ))}
