@@ -18,18 +18,24 @@ code required after setup.
    files), then go to [vercel.com](https://vercel.com), click **Add New
    → Project**, and import that repository.
 2. **Add a database** so your content is saved permanently:
-   - In your new Vercel project, open the **Storage** tab.
-   - Click **Create Database → KV** (this is a free tier by Upstash).
-   - Follow the prompts to create it and connect it to your project.
-     Vercel will automatically add the `KV_REST_API_URL` and
-     `KV_REST_API_TOKEN` environment variables for you — you don't
-     need to type these in yourself.
-3. **Set your admin password**:
+   - In your new Vercel project, open the **Storage** tab → **Browse
+     Storage**.
+   - Choose **Upstash** (a free serverless Redis provider), pick the
+     **Redis** option, and connect it to this project.
+   - When it asks for a **Custom Environment Variable Prefix**, type
+     `KV` — this matters, it's what makes the app find it
+     automatically as `KV_REST_API_URL` / `KV_REST_API_TOKEN`.
+3. **Add photo storage** so you can upload images from the admin
+   dashboard instead of only pasting links:
+   - Still in **Storage** → **Browse Storage**, choose **Blob** and
+     connect it to this project. This adds a `BLOB_READ_WRITE_TOKEN`
+     variable automatically — no custom prefix needed for this one.
+4. **Set your admin password**:
    - In your Vercel project, go to **Settings → Environment
      Variables**.
    - Add a variable named `ADMIN_PASSWORD` with a password only you
      know.
-4. Click **Deploy** (or **Redeploy** if it already deployed before you
+5. Click **Deploy** (or **Redeploy** if it already deployed before you
    added the database/password). Your site will be live at a
    `your-project.vercel.app` address, which you can later swap for a
    custom domain in **Settings → Domains**.
@@ -42,11 +48,10 @@ code required after setup.
   **Founders**. Changes appear on the live site immediately.
 - The **Messages** tab shows anything submitted through the Contact
   page, with a link to reply by email.
-- For photos, paste a link to an image that's already hosted online
-  (for example, upload it to your phone's cloud photos, Imgur, or your
-  Google Drive with public link sharing, then paste that link into the
-  Image URL field). This keeps the site simple and free to run —
-  it doesn't include its own file/image uploader.
+- For photos, click the file picker next to any Photo field and choose
+  an image straight from your computer or phone — it uploads
+  automatically and fills in the link for you (this needs the Blob
+  storage step above to be set up).
 
 ## 3. Running it on your own computer (optional)
 

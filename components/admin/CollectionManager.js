@@ -18,6 +18,7 @@ export default function CollectionManager({
   const [values, setValues] = useState(emptyValues(fields));
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [uploadingField, setUploadingField] = useState(null);
 
   async function load() {
     setLoading(true);
@@ -76,6 +77,27 @@ export default function CollectionManager({
     setSaving(false);
   }
 
+  async function handleFileChange(fieldName, file) {
+    if (!file) return;
+    setUploadingField(fieldName);
+    setError("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Upload failed");
+        setUploadingField(null);
+        return;
+      }
+      setValues((v) => ({ ...v, [fieldName]: data.url }));
+    } catch {
+      setError("Upload failed. Please try again.");
+    }
+    setUploadingField(null);
+  }
+
   async function handleDelete(id) {
     if (!confirm("Delete this entry? This can't be undone.")) return;
     await fetch(`/api/${endpoint}/${id}`, { method: "DELETE" });
@@ -117,6 +139,40 @@ export default function CollectionManager({
                   onChange={(e) => setValues({ ...values, [field.name]: e.target.value })}
                   className="w-full rounded-sm border border-sand-200 px-3 py-2 focus:border-rose-400 text-sm"
                 />
+              ) : field.type === "image" ? (
+                <div className="flex items-center gap-4">
+                  {values[field.name] ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={values[field.name]}
+                      alt=""
+                      className="w-16 h-16 rounded-sm object-cover border border-sand-200 shrink-0"
+                    />
+                  ) : (
+                    <div className="w-16 h-16 rounded-sm bg-sand-100 border border-sand-200 shrink-0" />
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      disabled={uploadingField === field.name}
+                      onChange={(e) => handleFileChange(field.name, e.target.files?.[0])}
+                      className="block w-full text-sm text-navy-600 file:mr-3 file:rounded-sm file:border-0 file:bg-navy-700 file:text-white file:px-3 file:py-2 file:text-sm file:font-medium hover:file:bg-navy-800 file:cursor-pointer"
+                    />
+                    {uploadingField === field.name && (
+                      <p className="text-xs text-navy-400 mt-1">Uploading…</p>
+                    )}
+                    {values[field.name] && uploadingField !== field.name && (
+                      <button
+                        type="button"
+                        onClick={() => setValues({ ...values, [field.name]: "" })}
+                        className="text-xs text-rose-500 hover:text-rose-600 mt-1"
+                      >
+                        Remove photo
+                      </button>
+                    )}
+                  </div>
+                </div>
               ) : (
                 <input
                   type={field.type || "text"}
@@ -133,7 +189,7 @@ export default function CollectionManager({
           <div className="flex gap-3">
             <button
               type="submit"
-              disabled={saving}
+              disabled={saving || Boolean(uploadingField)}
               className="rounded-sm bg-navy-700 text-white px-5 py-2 text-sm font-medium hover:bg-navy-800 transition-colors disabled:opacity-60"
             >
               {saving ? "Saving…" : "Save"}

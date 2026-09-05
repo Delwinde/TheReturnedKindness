@@ -17,7 +17,7 @@ const storyFields = [
   { name: "date", label: "Date", type: "date", required: true },
   { name: "excerpt", label: "Short excerpt (shown on the Stories list)", hint: "If left blank, we'll use the start of the story." },
   { name: "body", label: "Full story", type: "textarea", required: true },
-  { name: "image", label: "Image URL (optional)", hint: "Paste a link to an image hosted elsewhere." },
+  { name: "image", label: "Photo (optional)", type: "image" },
 ];
 
 const eventFields = [
@@ -25,14 +25,14 @@ const eventFields = [
   { name: "date", label: "Date", type: "date", required: true },
   { name: "location", label: "Location" },
   { name: "summary", label: "Summary", type: "textarea" },
-  { name: "image", label: "Image URL (optional)" },
+  { name: "image", label: "Photo (optional)", type: "image" },
 ];
 
 const founderFields = [
   { name: "name", label: "Name", required: true },
   { name: "role", label: "Role" },
   { name: "bio", label: "Bio", type: "textarea" },
-  { name: "photo", label: "Photo URL (optional)", hint: "Paste a link to a photo hosted elsewhere." },
+  { name: "photo", label: "Photo (optional)", type: "image" },
 ];
 
 export default function AdminDashboardPage() {
