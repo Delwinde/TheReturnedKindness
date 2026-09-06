@@ -25,9 +25,9 @@ export default function Navbar() {
           <Image
             src="/logo.png"
             alt="The Returned Kindness"
-            width={44}
-            height={44}
-            className="rounded-full"
+            width={52}
+            height={52}
+            className="rounded-md"
             priority
           />
           <span className="font-display text-lg text-navy-700 leading-tight">

@@ -65,16 +65,18 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="relative mx-auto">
-            <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-full bg-rose-100" />
-            <Image
-              src="/logo.png"
-              alt="The Returned Kindness — a hand receiving a gift beneath a crescent of care"
-              width={340}
-              height={340}
-              className="relative rounded-full border-8 border-sand-50 shadow-xl"
-              priority
-            />
+          <div className="relative mx-auto w-fit">
+            <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-rose-100" />
+            <div className="relative bg-white rounded-3xl shadow-xl p-5 border-8 border-sand-50">
+              <Image
+                src="/logo.png"
+                alt="The Returned Kindness — a hand receiving a gift beneath a crescent of care"
+                width={280}
+                height={322}
+                className="rounded-xl"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>

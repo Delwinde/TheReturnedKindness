@@ -37,7 +37,7 @@ export default function AdminLoginPage() {
     <div className="min-h-[70vh] flex items-center justify-center px-5">
       <div className="w-full max-w-sm">
         <div className="flex flex-col items-center mb-8">
-          <Image src="/logo.png" alt="The Returned Kindness" width={56} height={56} className="rounded-full mb-4" />
+          <Image src="/logo.png" alt="The Returned Kindness" width={72} height={72} className="rounded-md mb-4" />
           <h1 className="font-display text-2xl text-navy-800">Admin sign in</h1>
           <p className="text-sm text-navy-400 mt-1">Manage stories, events, and founders</p>
         </div>

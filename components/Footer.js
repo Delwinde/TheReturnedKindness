@@ -10,9 +10,9 @@ export default function Footer() {
             <Image
               src="/logo.png"
               alt="The Returned Kindness"
-              width={40}
-              height={40}
-              className="rounded-full"
+              width={48}
+              height={48}
+              className="rounded-md"
             />
             <span className="font-display text-lg text-white">The Returned Kindness</span>
           </div>
@@ -28,8 +28,8 @@ export default function Footer() {
             <li>Accra, Greater Accra, Ghana</li>
             <li>Non-profit &middot; 2–10 members</li>
             <li>
-              <a href="mailto:hello@thereturnedkindness.org" className="hover:text-rose-300">
-                hello@thereturnedkindness.org
+              <a href="mailto:info.trkc@gmail.com" className="hover:text-rose-300">
+                info.trkc@gmail.com
               </a>
             </li>
           </ul>
@@ -47,11 +47,13 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-navy-700">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-navy-200">
-          <span>&copy; {new Date().getFullYear()} The Returned Kindness. All rights reserved.</span>
-          <Link href="/admin" className="hover:text-rose-300">
-            Admin
-          </Link>
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 py-5 text-xs text-navy-200 text-center sm:text-left">
+          <span>
+            <Link href="/admin" aria-label="Site administration" className="hover:text-rose-300">
+              &copy;
+            </Link>{" "}
+            {new Date().getFullYear()} The Returned Kindness Lbg. All rights reserved.
+          </span>
         </div>
       </div>
     </footer>

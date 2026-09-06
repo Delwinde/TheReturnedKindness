@@ -21,8 +21,8 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-4xl px-5 sm:px-8 py-16 grid sm:grid-cols-2 gap-10">
         <div>
-          <h2 className="font-display text-2xl text-navy-800 mb-3">Industry</h2>
-          <p className="text-navy-500">Civic and Social Organizations</p>
+          <h2 className="font-display text-2xl text-navy-800 mb-3">Legal name</h2>
+          <p className="text-navy-500">The Returned Kindness Lbg</p>
         </div>
         <div>
           <h2 className="font-display text-2xl text-navy-800 mb-3">Type</h2>
@@ -35,6 +35,30 @@ export default function AboutPage() {
         <div>
           <h2 className="font-display text-2xl text-navy-800 mb-3">Headquarters</h2>
           <p className="text-navy-500">Accra, Greater Accra, Ghana</p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-5 sm:px-8 py-16 grid sm:grid-cols-2 gap-12">
+        <div>
+          <h2 className="font-display text-2xl text-rose-500 mb-3">Our vision</h2>
+          <p className="text-navy-600 leading-relaxed">
+            To create a compassionate world where every act of kindness, no
+            matter how small, is valued and reciprocated, fostering a
+            self-sustaining cycle of generosity and support within our global
+          </p>
+        </div>
+        <div>
+          <h2 className="font-display text-2xl text-rose-500 mb-3">Our mission</h2>
+          <p className="text-navy-600 leading-relaxed">
+            To mobilize individuals and organizations who believe in the
+            power of giving, regardless of their means. The Returned
+            Kindness club channels collective compassion and resources into
+            meaningful acts of relief and support for humanity, transforming
+            the &quot;widow&apos;s mite&quot; into a powerful force for
+            change. We exist not because we have surplus, but because we
+            remember the sacrifices made for us and are committed to paying
+            that kindness forward.
+          </p>
         </div>
       </section>
 
