@@ -45,6 +45,7 @@ export default function AboutPage() {
             To create a compassionate world where every act of kindness, no
             matter how small, is valued and reciprocated, fostering a
             self-sustaining cycle of generosity and support within our global
+            community.
           </p>
         </div>
         <div>

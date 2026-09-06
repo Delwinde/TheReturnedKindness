@@ -2,6 +2,7 @@ import { Fraunces, Work_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getSettings } from "@/lib/data";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -18,11 +19,34 @@ const workSans = Work_Sans({
   display: "swap",
 });
 
-export const metadata = {
-  title: "The Returned Kindness",
-  description:
-    "A charity club that seeks to put a smile on the faces of the less privileged. Your pain is our pain and your joy is our joy.",
-};
+const DEFAULT_DESCRIPTION =
+  "A charity club that seeks to put a smile on the faces of the less privileged. Your pain is our pain and your joy is our joy.";
+
+export async function generateMetadata() {
+  const settings = await getSettings();
+  const description = settings.metaDescription || DEFAULT_DESCRIPTION;
+  const keywords = settings.keywords
+    ? settings.keywords.split(",").map((k) => k.trim()).filter(Boolean)
+    : undefined;
+
+  return {
+    title: "The Returned Kindness",
+    description,
+    keywords,
+    openGraph: {
+      title: "The Returned Kindness",
+      description,
+      images: ["/logo.png"],
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: "The Returned Kindness",
+      description,
+      images: ["/logo.png"],
+    },
+  };
+}
 
 export default function RootLayout({ children }) {
   return (

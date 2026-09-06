@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getSettings } from "@/lib/data";
+import { SOCIAL_PLATFORMS } from "@/components/SocialIcons";
 
-export default function Footer() {
+export default async function Footer() {
+  const settings = await getSettings();
+  const activeSocials = SOCIAL_PLATFORMS.filter((p) => settings[p.key]);
+
   return (
     <footer className="bg-navy-800 text-sand-100 mt-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-14 grid gap-10 sm:grid-cols-3">
@@ -16,10 +21,26 @@ export default function Footer() {
             />
             <span className="font-display text-lg text-white">The Returned Kindness</span>
           </div>
-          <p className="text-sm text-navy-100 max-w-xs">
+          <p className="text-sm text-navy-100 max-w-xs mb-4">
             Your pain is our pain, and your joy is our joy. A civic club working
             to put a smile on the faces of the less privileged.
           </p>
+          {activeSocials.length > 0 && (
+            <div className="flex gap-3">
+              {activeSocials.map(({ key, label, Icon }) => (
+                <a
+                  key={key}
+                  href={settings[key]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="text-navy-100 hover:text-rose-300 transition-colors"
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         <div>

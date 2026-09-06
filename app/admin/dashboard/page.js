@@ -4,12 +4,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import CollectionManager from "@/components/admin/CollectionManager";
 import MessagesPanel from "@/components/admin/MessagesPanel";
+import SettingsPanel from "@/components/admin/SettingsPanel";
 
 const tabs = [
   { id: "stories", label: "Stories" },
   { id: "events", label: "Events" },
   { id: "founders", label: "Founders" },
   { id: "messages", label: "Messages" },
+  { id: "settings", label: "Settings" },
 ];
 
 const storyFields = [
@@ -104,6 +106,7 @@ export default function AdminDashboardPage() {
         />
       )}
       {tab === "messages" && <MessagesPanel />}
+      {tab === "settings" && <SettingsPanel />}
     </div>
   );
 }

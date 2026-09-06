@@ -52,6 +52,10 @@ code required after setup.
   an image straight from your computer or phone — it uploads
   automatically and fills in the link for you (this needs the Blob
   storage step above to be set up).
+- The **Settings** tab lets you add links to your Facebook, Instagram,
+  LinkedIn, X, YouTube, and TikTok (they show up as icons in the
+  footer once filled in), plus a search description and keywords that
+  help your site show up in Google searches.
 
 ## 3. Running it on your own computer (optional)
 
